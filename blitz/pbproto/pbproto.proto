@@ -1,0 +1,22 @@
+syntax = "proto3";
+package pbproto;
+
+//每一个消息由包头和包体组成
+//包头的长度是固定的,占用四个字节(uint32),存储了总个包的长度(包头长+包体长),以网络字节序存储
+
+
+//消息体
+message MsgBody{
+    uint32 ID = 1;        //消息命令
+    bytes Data = 2;      //具体消息的protobuffer封包
+}
+
+message LoginReq{
+    string Name = 1;
+    string Password = 2;
+}
+
+message LoginRsp{
+    uint32 Code = 1;
+    string Msg = 2;
+}
